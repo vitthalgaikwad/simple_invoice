@@ -1,28 +1,32 @@
-<%= form_for(@payment) do |f| %>
-  <% if @payment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= form_for(@payment) do |f| %>
+      <% if @payment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
 
-      <ul>
-      <% @payment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @payment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= label_tag :invoice_number %><br>
-    <%= text_field_tag :invoice_number, @invoice.number, readonly: true %>
-    <%= f.hidden_field :invoice_id, value: @invoice.id %>
-  </div>
+      <div class="form-group">
+        <%= label_tag :invoice_number %><br>
+        <%= text_field_tag :invoice_number, @invoice.number, readonly: true, class: 'form-control' %>
+        <%= f.hidden_field :invoice_id, value: @invoice.id %>
+      </div>
 
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
+      <div class="form-group">
+        <%= f.label :amount %><br>
+        <%= f.text_field :amount, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.submit 'Pay', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-  
-  <div class="actions">
-    <%= f.submit 'Pay' %>
-  </div>
-<% end %>
+</div>

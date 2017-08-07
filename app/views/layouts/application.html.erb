@@ -25,6 +25,7 @@
         <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li>
+
             <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
           </li>
           <% else %>
@@ -37,9 +38,16 @@
     </div>
   </nav>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <% if user_signed_in? %>
+        <span>Hi <%= current_user.email %></span>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>
