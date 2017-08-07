@@ -8,6 +8,10 @@ cd simple_invoice
 
 bundle install
 
+rake db:create
+
+rake db:migrate
+
 rails s
 
 
@@ -19,5 +23,7 @@ rails s
 	Postgres 9.3
 
 NOTE: No separate authentication used for api. You can see list of invoices using below urls for logged in user:
+
 user invoicdes: https://guarded-chamber-76880.herokuapp.com/invoices.json
+
 invoice details: https://guarded-chamber-76880.herokuapp.com/invoices/<invoice_id>.json
