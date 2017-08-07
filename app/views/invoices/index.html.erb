@@ -6,11 +6,10 @@
     <tr>
       <th>Number</th>
       <th>Amount</th>
+      <th>GBP Amount</th>
       <th>To address</th>
       <th>From address</th>
-      <th>Note</th>
-      <th>User</th>
-      <th colspan="5"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -19,14 +18,14 @@
       <tr>
         <td><%= invoice.number %></td>
         <td><%= invoice.amount %></td>
+        <td><%= invoice.gbp_amount %></td>
         <td><%= invoice.to_address %></td>
         <td><%= invoice.from_address %></td>
-        <td><%= invoice.note %></td>
-        <td><%= link_to 'Pay', new_payment_path(invoice_id: invoice.id) %></td>
-        <td><%= link_to 'Payments', payments_path(invoice_id: invoice.id) %></td>
-        <td><%= link_to 'Show', invoice %></td>
-        <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pay', new_payment_path(invoice_id: invoice.id) %> |
+          <%= link_to 'Payments', payments_path(invoice_id: invoice.id) %> |
+          <%= link_to 'Show', invoice %> |
+          <%= link_to 'Edit', edit_invoice_path(invoice) %> |
+          <%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
